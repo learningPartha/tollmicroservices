@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Toll Config Client</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1>Toll Rates Config client App</h1>
+			<p
+				th:text="'Your rate is: '+ ${rateamount} +' ,number of lanes is '+ ${lanes} +'.'"></p>
+			<p th:text="'Toll starts at '+ ${tollstart} +'.'"></p>
+			<p th:text="'Ecrypted Connection String '+ ${connstring} +'.'"></p>
+		</div>
+		<div class="col-mid-2"></div>
+	</div>
+</body>
+</html>

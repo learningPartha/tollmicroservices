@@ -1,0 +1,26 @@
+server:
+  port: 8888
+encrypt:
+  key: coffee123be456an
+#set encrypt enabled as false if we plan to decrypt at client
+spring:
+  security:
+    user:
+      name: pachowdh
+      password: pass
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
+        git:
+          uri: https://github.com/learningPartha/tollconfig
+          search-paths:
+          - station*
+          repos:
+            perf:
+              pattern: '*/perf'
+              uri:  https://github.com/learningPartha/tollconfigperf
+              search-paths:
+              - 'station*'
+  
