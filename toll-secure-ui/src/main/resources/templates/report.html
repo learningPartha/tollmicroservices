@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Toll App Report</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1>Toll Rates Report Page</h1>
+			 <table class="table table-striped">
+				<tr>
+					<th>Toll Id</th>
+					<th>Plate</th>
+					<th>Timestamp</th>
+				</tr>
+				<tr th:each="tollrecord : ${tollData}">
+					<td th:text="${tollrecord.recordId}"></td>
+					<td th:text="${tollrecord.licensePlate}"></td>
+					<td th:text="${tollrecord.timestamp}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-mid-2"></div>
+	</div>
+</body>
+</html>
