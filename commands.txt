@@ -1,0 +1,35 @@
+	
+app import --uri https://dataflow.spring.io/rabbitmq-maven-latest
+
+app import --uri https://dataflow.spring.io/task-maven-latest
+
+stream create --definition "http --port=8087 | file --directory=C:\SpringCloudDataFlow\dataflow-out --name=output --suffix=txt" --name ps-stream1 --deploy true
+
+stream create --definition "input: file --directory=C:\SpringCloudDataFlow\dataflow-in | transform --expression=payload+'-updated' | output: file --directory=C:\SpringCloudDataFlow\dataflow-out --suffix=txt --name=output" --name ps-stream2 --deploy true
+
+task create ps-task1 --definition "timestamp --format=\"MM-yy\""
+
+task launch ps-task1
+
+task execution log 1
+
+
+toll-stream=http --port=8086 | split-JSON: splitter --expression=#jsonPath(payload,'$.station.readings') | log
+
+tollstreamcounter=:toll-stream.split-JSON > throughput
+
+app register --name fraudcheck --type processor --uri maven://com.springdataflow:scoring-app:0.0.1-SNAPSHOT
+
+
+toll-intake-stream=http --port=8086 | split-JSON: splitter --expression=#jsonPath(payload,'$.station.readings') | fraudcheck --fraud-threshold=25 | log --level=INFO
+
+app.fraudcheck.spring.cloud.stream.function.bindings.assignscore-in-0=input
+app.fraudcheck.spring.cloud.stream.function.bindings.assignscore-out-0=output
+
+
+app register --name ps-task-1 --type task --uri maven://com.springdataflow:springdataflow-task-1:0.0.1-SNAPSHOT
+app register --name ps-task-2 --type task --uri maven://com.springdataflow:springdataflow-task-2:0.0.1-SNAPSHOT
+
+<ps-task-1 || ps-task-2 || timestamp>
+
+

@@ -1,0 +1,21 @@
+{ 
+    "station": {
+        "readings": [
+            {
+                "stationid":100,
+                "customerid":200,
+                "timestamp":"2021-12-15T08:09:10"
+            },
+            {
+                "stationid":101,
+                "customerid":220,
+                "timestamp":"2021-12-15T08:13:55"
+            },
+            {
+                "stationid":100,
+                "customerid":210,
+                "timestamp":"2021-12-15T08:14:03"
+            }
+        ]
+    }
+}

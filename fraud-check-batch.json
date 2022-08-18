@@ -1,0 +1,22 @@
+{ 
+    "station": {
+        "readings": [
+            {
+                "stationId":"1000",
+                "fastPassId":"800",
+                "amountPaid": 1.05
+            },
+            {
+                "stationId":"1001",
+                "fastPassId":"801",
+                "amountPaid": 0.65
+            },
+            {
+                "stationId":"1000",
+                "fastPassId":"802",
+                "amountPaid": 1.05
+            }
+            
+        ]
+    }
+}
